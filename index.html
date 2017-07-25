@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/login.css">
+  <title>Login</title>
+  <style media="screen">
+    #canvas{
+      opacity: 0.6
+    }
+  </style>
+  <!-- hanying@miaov.com -->
+  <script type="text/javascript">
+    window.onload = function(){
+      var inputs = document.querySelectorAll('input');
+      var btn = document.querySelector('a');
+      var loading = document.querySelector('.loading');
+      var len = inputs.length;
+      let prev = 0;
+      for(var i=0;i<len;i++){
+        inputs[i].index = i;
+        inputs[i].onfocus = function(){
+          inputs[0].parentNode.style.borderColor = '#000';
+          this.parentNode.style.borderColor = '#ffc815'
+          prev = index;
+        }
+        inputs[i].onblur = function(){
+          inputs[0].parentNode.style.borderColor = '#ffc815';
+          this.parentNode.style.borderColor = '#000'
+          prev = index;
+        }
+      }
+      btn.onclick = function(){
+        let _this = this;
+        if(inputs[0].value === '' || inputs[1].value === ''){
+          alert('请输入用户和密码')
+        }else{
+          window.clearTimeout(timer)
+          loading.style.opacity = '1';
+          var timer = setInterval(function () {
+            window.location.href = 'index.html';
+          }, 500);
+
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <section class="login_box">
+    <img src="images/login.gif" alt="" class="login_img">
+    <div class="input_box t1">
+      <i class="fa fa-user "></i>
+      <input type="text" name = "" placeholder="请输入用户名"/>
+    </div>
+    <div class="input_box t2">
+      <i class="fa fa-unlock-alt "></i>
+      <input type="password" name = "" placeholder="请输入密码"/>
+    </div>
+    <a href="javascript:void(0)" class="login_btn"> <i class="fa fa-spinner fa-pulse loading"></i>登&nbsp&nbsp录</a>
+  </section>
+</body>
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+
+  let W, H, nodes = [], edges = [];
+
+  window.onresize = function (){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    createParticles(W * H / 10000);
+  }
+
+  window.onresize();
+
+  function createParticles(n){
+    if(n !== nodes.length){
+      nodes = [];
+      edges = [];
+      for(let i=0; i<n; i++){
+        let node = {
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 1.2,
+          vy: (Math.random() - 0.5) * 1.2,
+          r: Math.random() > 0.9 ? Math.random() * 3 + 3 : Math.random() * 3 + 1,
+          color: '#fff'
+        };
+        nodes.push(node);
+      }
+    }
+    for(let i=0, len=nodes.length; i<len; i++){
+      for(let j=i+1; j<len; j++){
+        edges.push({
+          start: nodes[i],
+          end: nodes[j]
+        })
+      }
+    }
+  }
+
+  function update(){
+    nodes.forEach(function(item, i) {
+      item.x += item.vx;
+      item.y += item.vy;
+      if(item.x - item.r <= 0 || item.x + item.r >= W){
+        item.vx *= -1;
+      }
+      if(item.y - item.r <= 0 || item.y + item.r >= H){
+        item.vy *= -1;
+      }
+    });
+  }
+
+  function render(){
+    ctx.clearRect(0, 0, W, H);
+    // ctx.fillRect(0, 0, W, H);
+
+    nodes.forEach(function(item, i) {
+      ctx.save();
+      ctx.fillStyle = item.color;
+      ctx.beginPath();
+      ctx.arc(item.x, item.y, item.r, 0, 2*Math.PI);
+      ctx.fill();
+      ctx.restore();
+    });
+
+    edges.forEach(function(item) {
+      let l = distance(item);
+      let s = W > H ? W/8 : H/8;
+
+      if(l > s) return;
+
+      ctx.save();
+      ctx.strokeStyle = '#fff';
+      ctx.globalAlpha = 1 - l/s;
+      ctx.lineWidth = (1 - l/s) * 2;
+      ctx.beginPath();
+      ctx.moveTo(item.start.x, item.start.y);
+      ctx.lineTo(item.end.x, item.end.y);
+      ctx.stroke();
+      ctx.restore();
+    });
+  }
+
+  function distance(node){
+    let x = Math.pow(node.start.x - node.end.x, 2);
+    let y = Math.pow(node.start.y - node.end.y, 2);
+    return Math.sqrt(x + y);
+  }
+
+  (function fn(){
+    window.requestAnimationFrame(fn);
+    update();
+    render();
+  })();
+</script>
+</html>

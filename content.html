@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <title>首页</title>
+  <style media="screen">
+
+  </style>
+</head>
+<body>
+  <section class="left_box">
+    <div class="login_box">
+      <img src="images/login.gif" alt="login" width="80px" height="80px" class="login_img"/>
+      <p class="login_title">管理员_西西</p>
+    </div>
+    <div class="menu">
+      <ul>
+        <li>
+          <a href="javascript:void(0)" class="active">
+            <i class="fa fa-folder-open-o w20"></i>
+            全部文件
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa fa-image w20"></i>
+            图片
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa fa-file-photo-o w20 "></i>
+            文件
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa fa-film w20"></i>
+            视频
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa fa-music w20"></i>
+            音乐
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa fa-share-alt w20"></i>
+            我的分享
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <i class="fa fa-trash  w20"></i>
+            回收站
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="right_box">
+    <div class="nav">
+      <div class="logo">
+        <i class="fa fa-viadeo fa-3x"></i>
+        <p>西西网盘</p>
+      </div>
+      <div class="search_btn">
+        <input type="text" name = "search"/>
+        <a href="javascript:void(0)"><i class="fa fa-search fa-lg"></i></a>
+      </div>
+      <div class="header_btn">
+        <ul>
+          <li>
+            <a href="javascript:void(0)">
+              <i class="fa fa-volume-up "></i>
+              消息
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <i class="fa fa-wrench "></i>
+              设置
+            </a>
+          </li>
+          <li style="border-right:0">
+            <a href="javascript:void(0)">
+              <i class="fa fa-sign-out "></i>
+              退出
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="show_box">
+      <div class="path">
+        <ul>
+          <li style="border-right:1px solid #000;margin-right: 10px;"><a href="javascript:void(0)" class="backPrev"><i class="fa fa-mail-reply-all fa-lg "></i></a></li>
+          <li><span class="path-content">全部文件</span></li>
+        </ul>
+        <span class="path-text">已全部加载，共3个</span>
+      </div>
+      <div class="btns_list">
+        <a href="javascript:void(0)" class="move-file">
+          <i class="fa fa-scissors fa-lg"></i>
+          <span>移动文件夹</span>
+        </a>
+        <a href="javascript:void(0)" class="create-file">
+          <i class="fa fa-folder-open-o fa-lg"></i>
+          <span>新建文件夹</span>
+        </a>
+        <a href="javascript:void(0)" class="delete-file">
+          <i class="fa fa-trash-o fa-lg"></i>
+          <span>删除文件夹</span>
+        </a>
+        <a href="javascript:void(0)" class="rename-file">
+          <i class="fa fa-edit fa-lg"></i>
+          <span>文件夹重命名</span>
+        </a>
+        <a href="javascript:void(0)" class="reDoint">
+          <i class="fa fa-refresh fa-lg"></i>
+          <span>刷新文件夹</span>
+        </a>
+      </div>
+      <div class="control_filter">
+        <div class="data-st-box">
+          <span class="checkBox"></span>
+          <span class="checkBoxText">全部文件</span>
+        </div>
+        <div class="dataFlieBox">
+          <div class="file">
+            <div class="checkbox"></div>
+            <div class="file-img"></div>
+            <div class="file-name">
+              <span class="file-show-name" title="新建文件夹">新建文件夹</span>
+              <input type="text" class="file-change-name">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="move-list-wrap" style= "transform: -scale(1);">
+      <div class="move-list-panel">
+        <div class="move-list-header">
+          <h3>请选择储存位置</h3>
+          <span>×</span>
+        </div>
+        <div class="move-list-menu-wrap">
+          <div class="move-list-menu">
+
+          </div>
+        </div>
+        <div class="move-list-btns">
+          <button class="sure">确定</button>
+          <button class="cancel">取消</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div class="tipContent">
+        <div class="tipHeader">
+          <h2>提示信息</h2>
+          <span class="shutbtn">×</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="text/javascript" src = 'js/data.js'></script>
+  <script type="text/javascript" src = 'js/tool.js'></script>
+  <script type="text/javascript" src = 'js/view.js'></script>
+</body>
+
+</html>
